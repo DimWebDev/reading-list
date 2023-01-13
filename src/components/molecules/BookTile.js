@@ -3,6 +3,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { BookEdit } from "./BookEdit";
 import { StyledButtonElement } from "../atoms/button/StyledButton";
+import { StyledDivElement } from "../atoms/div/StyledDiv";
 
 const StyledBookTileContainer = styled.div`
   border: 1px solid gray;
@@ -44,13 +45,13 @@ export const BookTile = ({ book, onDelete }) => {
 
   let content = <h3>{book.title}</h3>;
   if (showEdit) {
-    content = <BookEdit />;
+    content = <BookEdit bookTitle={book.title} />;
   }
 
   return (
     <StyledBookTileContainer>
-      <div>{content}</div>
-      <div className="actions">
+      <StyledDivElement>{content}</StyledDivElement>
+      <StyledDivElement type="actions">
         <StyledButtonElement
           type="edit"
           onClick={handleEditClick}
@@ -58,7 +59,7 @@ export const BookTile = ({ book, onDelete }) => {
         <StyledButtonElement type="delete" onClick={handleDeleteClick}>
           Delete Book
         </StyledButtonElement>
-      </div>
+      </StyledDivElement>
     </StyledBookTileContainer>
   );
 };
