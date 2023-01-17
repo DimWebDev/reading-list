@@ -17,9 +17,11 @@ const StyledBookListContainer = styled.div`
   }
 `;
 
-export const BookList = ({ books, onDelete }) => {
+export const BookList = ({ books, onDelete, onEdit }) => {
   const renderedBooks = books.map((book) => {
-    return <BookTile key={book.id} book={book} onDelete={onDelete} />;
+    return (
+      <BookTile key={book.id} book={book} onDelete={onDelete} onEdit={onEdit} />
+    );
   });
 
   return <StyledBookListContainer>{renderedBooks}</StyledBookListContainer>;

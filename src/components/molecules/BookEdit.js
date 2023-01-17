@@ -11,8 +11,8 @@ const StyledForm = styled.form`
   flex-direction: column;
 `;
 
-export const BookEdit = ({ bookTitle }) => {
-  const [title, setTitle] = useState(bookTitle);
+export const BookEdit = ({ book, onEdit, onSubmit }) => {
+  const [title, setTitle] = useState(book.title);
 
   const handleChange = (event) => {
     setTitle(event.target.value);
@@ -20,7 +20,7 @@ export const BookEdit = ({ bookTitle }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(title);
+    onSubmit(book.id, title);
   };
 
   return (

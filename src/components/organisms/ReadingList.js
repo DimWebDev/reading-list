@@ -19,6 +19,16 @@ const StyledReadindListContainer = styled.div`
 export const ReadingList = () => {
   const [books, setBooks] = useState([]);
 
+  const editBookById = (id, newTitle) => {
+    const updatedBooks = books.map((book) => {
+      if (book.id === id) {
+        return { ...books, title: newTitle };
+      }
+      return book;
+    });
+    setBooks(updatedBooks);
+  };
+
   const deleteBookById = (id) => {
     const updatedBooks = books.filter((book) => {
       return book.id !== id;
@@ -34,7 +44,7 @@ export const ReadingList = () => {
 
   return (
     <StyledReadindListContainer>
-      <BookList books={books} onDelete={deleteBookById} />
+      <BookList books={books} onDelete={deleteBookById} onEdit={editBookById} />
       <BookCreate onCreate={handleCreateBook} />
     </StyledReadindListContainer>
   );

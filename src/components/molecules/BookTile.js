@@ -32,7 +32,7 @@ const StyledBookTileContainer = styled.div`
   }
 `;
 
-export const BookTile = ({ book, onDelete }) => {
+export const BookTile = ({ book, onDelete, onEdit }) => {
   const [showEdit, setShowEdit] = useState(false);
 
   const handleDeleteClick = () => {
@@ -43,9 +43,14 @@ export const BookTile = ({ book, onDelete }) => {
     setShowEdit(!showEdit);
   };
 
+  const handleSubmit = (id, newTitle) => {
+    onEdit(id, newTitle);
+    setShowEdit(false);
+  };
+
   let content = <h3>{book.title}</h3>;
   if (showEdit) {
-    content = <BookEdit bookTitle={book.title} />;
+    content = <BookEdit book={book} onSubmit={handleSubmit} />;
   }
 
   return (
