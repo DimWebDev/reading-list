@@ -9,10 +9,12 @@ import { H3 } from "../atoms/h3/H3";
 
 const StyledContainer = styled.div`
   background-color: #00d1b2;
+  left: 0px;
   bottom: 0;
   padding: 20px 40px 30px;
   position: fixed;
   width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
 `;
 
 export const BookCreate = ({ onCreate }) => {

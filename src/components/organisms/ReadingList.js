@@ -6,7 +6,8 @@ import { BookCreate } from "../molecules/BookCreate";
 import { BookList } from "../molecules/BookList";
 
 const StyledReadindListContainer = styled.div`
-  margin-bottom: 215px;
+  margin: 0px 10px 215p 0px;
+  font-family: Arial, Helvetica, sans-serif;
   position: relative;
   h1 {
     font-size: 48px;
