@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { BookEdit } from "./BookEdit";
 import { StyledButtonElement } from "../atoms/button/StyledButton";
 import { StyledDivElement } from "../atoms/div/StyledDiv";
+import { Img } from "../atoms/img/Img";
 
 const StyledBookTileContainer = styled.div`
   border: 1px solid gray;
@@ -55,6 +56,7 @@ export const BookTile = ({ book, onDelete, onEdit }) => {
 
   return (
     <StyledBookTileContainer>
+      <Img src={`https://picsum.photos/seed/${book.id}/300/200`} />
       <StyledDivElement>{content}</StyledDivElement>
       <StyledDivElement type="actions">
         <StyledButtonElement
