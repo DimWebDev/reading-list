@@ -17,7 +17,6 @@ const StyledCreateButton = styled.button`
   position: relative;
   vertical-align: top;
   margin: 5px 0px;
-  
 `;
 
 const StyledXIconButton = styled.button`

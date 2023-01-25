@@ -1,0 +1,32 @@
+# Get all books
+GET http://localhost:3001/books HTTP/1.1
+Content-Type: application/json
+
+###
+
+# Add a new book to the database by writting only the title.
+# The books id is added automatically 
+POST http://localhost:3001/books HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Harry Potter"
+}
+
+###
+
+# Edit an existing entry on the database
+PUT http://localhost:3001/books/2 HTTP/1.1
+Content-Type: application/json
+
+{
+    "title":"Updated Title"
+}
+
+###
+
+# Delete a book with a specific id from the database
+DELETE  http://localhost:3001/books/3 HTTP/1.1
+Content-Type: application/json
+
+
