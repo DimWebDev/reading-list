@@ -1,5 +1,6 @@
+import axios from "axios";
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { H1 } from "../atoms/h1/H1";
 import { BookCreate } from "../molecules/BookCreate";
@@ -21,26 +22,52 @@ const StyledReadindListContainer = styled.div`
 export const ReadingList = () => {
   const [books, setBooks] = useState([]);
 
-  const editBookById = (id, newTitle) => {
+  useEffect(() => {
+    const fetchBooks = async () => {
+      const response = await axios.get("http://localhost:3001/books");
+      setBooks(response.data);
+    };
+
+    fetchBooks();
+  }, []);
+
+  const editBookById = async (id, newTitle) => {
+    const response = await axios.put(`http://localhost:3001/books/${id}`, {
+      title: newTitle,
+    });
+
     const updatedBooks = books.map((book) => {
       if (book.id === id) {
-        return { ...books, title: newTitle };
+        return { ...book, ...response.data };
       }
       return book;
     });
     setBooks(updatedBooks);
   };
 
-  const deleteBookById = (id) => {
+  const deleteBookById = async (id) => {
+    await axios.delete(`http://localhost:3001/books/${id}`);
     const updatedBooks = books.filter((book) => {
       return book.id !== id;
     });
     setBooks(updatedBooks);
   };
 
-  const handleCreateBook = (title) => {
-    const randomID = Math.round(Math.random() * 999);
-    const updatedBooksArray = [...books, { id: randomID, title: title }];
+  // ############ Equivalent delete solution to update the local state
+  // ############ of the component by doing a new GET request to our server
+  // const deleteBookById = async (id) => {
+  //   await axios.delete(`http://localhost:3001/books/${id}`);
+
+  //   const response = await axios.get("http://localhost:3001/books");
+  //   setBooks(response.data);
+  // };
+
+  const handleCreateBook = async (title) => {
+    const response = await axios.post("http://localhost:3001/books", {
+      title: title,
+    });
+
+    const updatedBooksArray = [...books, response.data];
     setBooks(updatedBooksArray);
   };
 
