@@ -1,7 +1,8 @@
 import axios from "axios";
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
+import { BookContext } from "../../context/Books";
 import { H1 } from "../atoms/h1/H1";
 import { BookCreate } from "../molecules/BookCreate";
 import { BookList } from "../molecules/BookList";
@@ -20,6 +21,8 @@ const StyledReadindListContainer = styled.div`
 `;
 
 export const ReadingList = () => {
+  const { count, incrementCount } = useContext(BookContext);
+
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
@@ -76,6 +79,8 @@ export const ReadingList = () => {
       <H1 text="Reading List Application" />
       <BookList books={books} onDelete={deleteBookById} onEdit={editBookById} />
       <BookCreate onCreate={handleCreateBook} />
+      <p>Count: {count}</p>
+      <button onClick={incrementCount}>Increment Count</button>
     </StyledReadindListContainer>
   );
 };
