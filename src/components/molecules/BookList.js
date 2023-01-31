@@ -1,7 +1,6 @@
 import React from "react";
-import { useContext } from "react";
-
 import styled from "styled-components";
+import { useBooksContext } from "../../hooks/useBooksContext";
 import { BookTile } from "./BookTile";
 
 const StyledBookListContainer = styled.div`
@@ -19,11 +18,10 @@ const StyledBookListContainer = styled.div`
   }
 `;
 
-export const BookList = ({ books, onDelete, onEdit }) => {
+export const BookList = () => {
+  const { books } = useBooksContext();
   const renderedBooks = books.map((book) => {
-    return (
-      <BookTile key={book.id} book={book} onDelete={onDelete} onEdit={onEdit} />
-    );
+    return <BookTile key={book.id} book={book} />;
   });
 
   return <StyledBookListContainer>{renderedBooks}</StyledBookListContainer>;

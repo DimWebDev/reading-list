@@ -5,6 +5,8 @@ import { StyledInputElement } from "../atoms/input/StyledInput";
 import { StyledButtonElement } from "../atoms/button/StyledButton";
 import { Label } from "../atoms/label/Label";
 
+import { useBooksContext } from "../../hooks/useBooksContext";
+
 const StyledForm = styled.form`
   align-items: flex-start;
   display: flex;
@@ -12,8 +14,10 @@ const StyledForm = styled.form`
   font-family: Arial, Helvetica, sans-serif;
 `;
 
-export const BookEdit = ({ book, onEdit, onSubmit }) => {
+export const BookEdit = ({ book, onSubmit }) => {
   const [title, setTitle] = useState(book.title);
+
+  const { editBookById } = useBooksContext();
 
   const handleChange = (event) => {
     setTitle(event.target.value);
@@ -21,7 +25,8 @@ export const BookEdit = ({ book, onEdit, onSubmit }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit(book.id, title);
+    onSubmit();
+    editBookById(book.id, title);
   };
 
   return (
