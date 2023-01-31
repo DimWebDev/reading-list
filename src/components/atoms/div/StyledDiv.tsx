@@ -10,7 +10,12 @@ const StyledDiv = styled.div`
 
 const UnstyledDiv = styled.div``;
 
-export const StyledDivElement = (props) => {
+interface StyledDivElementProps {
+  type: string;
+  children: React.ReactNode;
+}
+
+export const StyledDivElement: React.FC<StyledDivElementProps> = (props) => {
   const DivElement = props.type === "actions" ? StyledDiv : UnstyledDiv;
 
   return (

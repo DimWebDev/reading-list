@@ -119,8 +119,17 @@ const StyledSaveButton = styled.button`
     color: #fff;
   }
 `;
+interface StyledButtonElementProps {
+  type: string;
+  onClick: () => void;
+  text: string;
+}
 
-export const StyledButtonElement = ({ type, onClick, text }) => {
+export const StyledButtonElement: React.FC<StyledButtonElementProps> = ({
+  type,
+  onClick,
+  text,
+}) => {
   const Button =
     type === "create"
       ? StyledCreateButton

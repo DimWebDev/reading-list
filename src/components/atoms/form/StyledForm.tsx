@@ -7,8 +7,15 @@ const StyledForm = styled.form`
   flex-direction: column;
   font-family: Arial, Helvetica, sans-serif;
 `;
+interface StyledFormElementProps {
+  onSubmit: () => void;
+  children: React.ReactNode;
+}
 
-export const StyledFormElement = ({ onSubmit, children }) => {
+export const StyledFormElement: React.FC<StyledFormElementProps> = ({
+  onSubmit,
+  children,
+}) => {
   return (
     <>
       <StyledForm onSubmit={onSubmit}>{children}</StyledForm>
