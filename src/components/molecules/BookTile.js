@@ -5,6 +5,7 @@ import { BookEdit } from "./BookEdit";
 import { StyledButtonElement } from "../atoms/button/StyledButton";
 import { StyledDivElement } from "../atoms/div/StyledDiv";
 import { Img } from "../atoms/img/Img";
+import { useBooksContext } from "../../hooks/useBooksContext";
 
 const StyledBookTileContainer = styled.div`
   border: 1px solid gray;
@@ -33,19 +34,20 @@ const StyledBookTileContainer = styled.div`
   }
 `;
 
-export const BookTile = ({ book, onDelete, onEdit }) => {
+export const BookTile = ({ book }) => {
+  const { deleteBookById } = useBooksContext();
+
   const [showEdit, setShowEdit] = useState(false);
 
   const handleDeleteClick = () => {
-    onDelete(book.id);
+    deleteBookById(book.id);
   };
 
   const handleEditClick = () => {
     setShowEdit(!showEdit);
   };
 
-  const handleSubmit = (id, newTitle) => {
-    onEdit(id, newTitle);
+  const handleSubmit = () => {
     setShowEdit(false);
   };
 

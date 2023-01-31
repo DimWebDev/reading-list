@@ -6,6 +6,7 @@ import { StyledButtonElement } from "../atoms/button/StyledButton";
 import { StyledFormElement } from "../atoms/form/StyledForm";
 import { Label } from "../atoms/label/Label";
 import { H3 } from "../atoms/h3/H3";
+import { useBooksContext } from "../../hooks/useBooksContext";
 
 const StyledContainer = styled.div`
   background-color: #00d1b2;
@@ -17,7 +18,9 @@ const StyledContainer = styled.div`
   font-family: Arial, Helvetica, sans-serif;
 `;
 
-export const BookCreate = ({ onCreate }) => {
+export const BookCreate = () => {
+  const { handleCreateBook } = useBooksContext();
+
   const [title, setTitle] = useState("");
 
   const handleChange = (event) => {
@@ -26,7 +29,7 @@ export const BookCreate = ({ onCreate }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onCreate(title);
+    handleCreateBook(title);
     setTitle("");
   };
 
