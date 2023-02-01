@@ -120,9 +120,10 @@ const StyledSaveButton = styled.button`
   }
 `;
 interface StyledButtonElementProps {
-  type: string;
-  onClick: () => void;
-  text: string;
+  type?: string;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  text?: string;
+  children?: React.ReactNode;
 }
 
 export const StyledButtonElement: React.FC<StyledButtonElementProps> = ({

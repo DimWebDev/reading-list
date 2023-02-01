@@ -11,7 +11,7 @@ const StyledDiv = styled.div`
 const UnstyledDiv = styled.div``;
 
 interface StyledDivElementProps {
-  type: string;
+  type?: string;
   children: React.ReactNode;
 }
 

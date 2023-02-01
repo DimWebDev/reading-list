@@ -1,10 +1,8 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { StyledInputElement } from "../atoms/input/StyledInput";
 import { StyledButtonElement } from "../atoms/button/StyledButton";
 import { Label } from "../atoms/label/Label";
-
 import { useBooksContext } from "../../hooks/useBooksContext";
 
 const StyledForm = styled.form`
@@ -14,16 +12,24 @@ const StyledForm = styled.form`
   font-family: Arial, Helvetica, sans-serif;
 `;
 
-export const BookEdit = ({ book, onSubmit }) => {
+interface BookEditProps {
+  book: {
+    id: string;
+    title: string;
+  };
+  onSubmit: () => void;
+}
+
+export const BookEdit: React.FC<BookEditProps> = ({ book, onSubmit }) => {
   const [title, setTitle] = useState(book.title);
 
   const { editBookById } = useBooksContext();
 
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     onSubmit();
     editBookById(book.id, title);

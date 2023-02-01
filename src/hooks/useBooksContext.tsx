@@ -1,6 +1,10 @@
 import { useContext } from "react";
-import { BookContext } from "../context/Books";
+import { BookContext, BookContextProps } from "../context/Books";
 
-export const useBooksContext = () => {
-  return useContext(BookContext);
+export const useBooksContext = (): BookContextProps => {
+  const context = useContext(BookContext);
+  if (context === null) {
+    throw new Error("BookContext must be used within a Provider");
+  }
+  return context;
 };

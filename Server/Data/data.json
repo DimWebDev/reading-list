@@ -1,16 +1,3 @@
 {
-  "books": [
-    {
-      "title": "Hunger Games",
-      "id": 2
-    },
-    {
-      "title": "bgc",
-      "id": 3
-    },
-    {
-      "title": "dfg",
-      "id": 4
-    }
-  ]
+  "books": []
 }

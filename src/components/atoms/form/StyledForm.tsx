@@ -8,7 +8,7 @@ const StyledForm = styled.form`
   font-family: Arial, Helvetica, sans-serif;
 `;
 interface StyledFormElementProps {
-  onSubmit: () => void;
+  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
   children: React.ReactNode;
 }
 
