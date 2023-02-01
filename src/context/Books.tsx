@@ -56,6 +56,10 @@ export const Provider: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   };
 
   const handleCreateBook = async (title: string): Promise<void> => {
+    if (title.trim() === "") {
+      return;
+    }
+
     const response = await axios.post("http://localhost:3001/books", {
       title: title,
     });
