@@ -6,6 +6,7 @@ import { StyledButtonElement } from "../atoms/button/StyledButton";
 import { StyledDivElement } from "../atoms/div/StyledDiv";
 import { Img } from "../atoms/img/Img";
 import { useBooksContext } from "../../hooks/useBooksContext";
+import { BookTileProps } from "./BookList";
 
 const StyledBookTileContainer = styled.div`
   border: 1px solid gray;
@@ -34,7 +35,7 @@ const StyledBookTileContainer = styled.div`
   }
 `;
 
-export const BookTile = ({ book }) => {
+export const BookTile = ({ book }: BookTileProps) => {
   const { deleteBookById } = useBooksContext();
 
   const [showEdit, setShowEdit] = useState(false);

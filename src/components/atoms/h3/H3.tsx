@@ -7,7 +7,11 @@ const StyledH3 = styled.h3`
   font-weight: 700;
 `;
 
-export const H3 = ({ text }) => {
+interface H3Props {
+  text: string;
+}
+
+export const H3: React.FC<H3Props> = ({ text }) => {
   return (
     <>
       <StyledH3>{text}</StyledH3>

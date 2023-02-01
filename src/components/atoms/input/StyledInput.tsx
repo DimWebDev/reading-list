@@ -27,7 +27,19 @@ margin: 5px 0px;
 }
 }`;
 
-export const StyledInputElement = ({ onChange, value }) => {
+interface StyledInputElementProps {
+  id?: string;
+  type?: string;
+  value: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+export const StyledInputElement: React.FC<StyledInputElementProps> = ({
+  id,
+  type,
+  value,
+  onChange,
+}) => {
   return (
     <>
       <StyledInput onChange={onChange} value={value} />

@@ -1,6 +1,5 @@
-import React from "react";
+import React, { FC, useState } from "react";
 import styled from "styled-components";
-import { useState } from "react";
 import { StyledInputElement } from "../atoms/input/StyledInput";
 import { StyledButtonElement } from "../atoms/button/StyledButton";
 import { StyledFormElement } from "../atoms/form/StyledForm";
@@ -18,16 +17,17 @@ const StyledContainer = styled.div`
   font-family: Arial, Helvetica, sans-serif;
 `;
 
-export const BookCreate = () => {
-  const { handleCreateBook } = useBooksContext();
+interface Props {}
 
+export const BookCreate: FC<Props> = () => {
+  const { handleCreateBook } = useBooksContext();
   const [title, setTitle] = useState("");
 
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     handleCreateBook(title);
     setTitle("");

@@ -18,7 +18,16 @@ const StyledBookListContainer = styled.div`
   }
 `;
 
-export const BookList = () => {
+export interface BookTileProps {
+  book: {
+    id: string;
+    title: string;
+    author: string;
+    publicationDate: string;
+  };
+}
+
+export const BookList: React.FC = () => {
   const { books } = useBooksContext();
   const renderedBooks = books.map((book) => {
     return <BookTile key={book.id} book={book} />;
@@ -26,3 +35,5 @@ export const BookList = () => {
 
   return <StyledBookListContainer>{renderedBooks}</StyledBookListContainer>;
 };
+
+export default BookList;

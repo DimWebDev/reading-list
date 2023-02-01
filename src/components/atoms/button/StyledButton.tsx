@@ -119,8 +119,18 @@ const StyledSaveButton = styled.button`
     color: #fff;
   }
 `;
+interface StyledButtonElementProps {
+  type?: string;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  text?: string;
+  children?: React.ReactNode;
+}
 
-export const StyledButtonElement = ({ type, onClick, text }) => {
+export const StyledButtonElement: React.FC<StyledButtonElementProps> = ({
+  type,
+  onClick,
+  text,
+}) => {
   const Button =
     type === "create"
       ? StyledCreateButton
